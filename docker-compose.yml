@@ -1,9 +1,9 @@
 version: "3.7"
 services:
-  backend:
-    build: ./backend
+  api:
+    build: ./api
     volumes:
-      - ./backend:/app/backend
+      - ./api:/app/api
     ports:
       - "8000:8000"
     stdin_open: true
@@ -19,5 +19,5 @@ services:
     environment:
       - NODE_ENV=development
     depends_on:
-      - backend
+      - api
     command: npm run serve

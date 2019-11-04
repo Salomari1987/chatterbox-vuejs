@@ -3,7 +3,7 @@
 
 build_backend:
 	@echo 'Building backend image' $
-	docker build -t backend:latest backend $
+	docker build -t api:latest api $
 	@echo 'Build successful' $
 
 
