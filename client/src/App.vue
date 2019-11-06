@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -65,13 +65,20 @@ export default {
     flex-direction: column;
   }
 
-  .conversation-main {
-    flex-grow:1;
-    border: 1px solid red;
+  .conversation {
+    &-main {
+      flex-grow:1;
+      border: 1px solid red;
+    }
+
+    &-input {
+      height: 60px;
+      border: 1px solid red;
+    }
   }
-  .conversation-input {
-    height: 60px;
-    border: 1px solid red;
+
+  .message {
+    display: flex;
   }
 
   .navbar {
@@ -84,13 +91,13 @@ export default {
     width: 100%;
     left:0;
     padding: 10px;
-  }
 
-  .navbar .logo {
-    height: 100%;
-  }
+    .logo {
+      height: 100%;
 
-  .navbar .logo img {
-    height: 100%;
+      img {
+        height: 100%;
+      }
+    }
   }
 </style>
