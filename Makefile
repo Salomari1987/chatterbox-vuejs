@@ -13,6 +13,12 @@ build_frontend:
 	@echo 'Build successful' $
 
 
+migrate_backend:
+	@echo 'Building backend image' $
+	docker-compose run --rm api python manage.py migrate $
+	@echo 'Build successful' $
+
+
 start:
 	@echo 'Make sure you have Docker version 18.02.0 or higher'
 	@echo 'Did you run `make build_backend` and `make build_frontend` ever?'
