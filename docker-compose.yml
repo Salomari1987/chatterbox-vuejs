@@ -1,5 +1,14 @@
 version: "3.7"
 services:
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+       MYSQL_DATABASE: 'chatterbox'
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'password'
+       MYSQL_ROOT_PASSWORD: 'password'
   api:
     build: ./api
     volumes:
@@ -8,6 +17,8 @@ services:
       - "8000:8000"
     stdin_open: true
     tty: true
+    depends_on:
+      - db
     command: python3 manage.py runserver 0.0.0.0:8000
   client:
     build: ./client
