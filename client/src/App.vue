@@ -7,15 +7,23 @@
       <div class="container-grid">
         <div class="side-col-3 left">
           <div class="users">
-            users
+            <Users :users="users"/>
           </div>
         </div>
         <div class="main-col">
           <div class="conversation-main">
-            conversation
+            <div v-if="!current_chat_channel"
+                 class="select-chat text-center">
+                Select a user to start chatting...
+              </div>
+            <Conversation
+                v-else
+                :active_chat="active_chat_id"
+                :messages="messages[current_chat_channel]"
+            />
           </div>
           <div class="conversation-input">
-            input
+            <ChatInput />
           </div>
         </div>
       </div>
@@ -24,10 +32,50 @@
 </template>
 
 <script>
+import Users from './components/Users.vue';
+import Conversation from './components/Conversation.vue';
+import ChatInput from './components/ChatInput.vue';
 
 export default {
   name: 'app',
-  components: {},
+  components: {
+    Users,
+    Conversation,
+    ChatInput,
+  },
+  data() {
+    return {
+      users: [{
+        userName: 'user1',
+        id: 1,
+      }, {
+        userName: 'user2',
+        id: 2,
+      }, {
+        userName: 'user3',
+        id: 3,
+      }],
+      messages: [[{
+        from_user: '1',
+        to_user: '2',
+        message: 'hi',
+      }, {
+        from_user: '2',
+        to_user: '1',
+        message: 'helloooo',
+      }], [{
+        from_user: '2',
+        to_user: '3',
+        message: 'hello mr, how are you?',
+      }, {
+        from_user: '3',
+        to_user: '2',
+        message: 'helloooo',
+      }]],
+      active_chat_id: 2,
+      current_chat_channel: 1,
+    };
+  },
 };
 </script>
 
