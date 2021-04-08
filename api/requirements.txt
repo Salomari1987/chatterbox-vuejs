@@ -1,4 +1,4 @@
-django==2.2.5
+django==2.2.20
 pusher==2.1.4
 mysqlclient==1.4.5
 django-mysql==3.2.0
